@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         // Navigation Host
         NavigationUI.setupActionBarWithNavController(this,_navController)
 
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
