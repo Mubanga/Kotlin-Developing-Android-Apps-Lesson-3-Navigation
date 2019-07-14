@@ -19,12 +19,26 @@ package com.example.android.navigation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private val _navController by lazy {this.findNavController(R.id.myNavHostFragment)}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         @Suppress("UNUSED_VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+
+        // A Navigation Controller Is Needed To Establish/Setup The Action Bar Navigation With The
+        // Navigation Host
+        NavigationUI.setupActionBarWithNavController(this,_navController)
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return _navController.navigateUp()
     }
 }
